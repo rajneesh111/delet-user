@@ -25,6 +25,6 @@ jobs:
           target: /home/ubuntu/
           
           script: |
-            sudo -i
             cd /home/ubuntu/ 
+            sudo chmod +x delete-user.sh
             ./delete-user.sh user.txt
