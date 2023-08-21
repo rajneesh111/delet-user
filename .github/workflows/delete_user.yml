@@ -16,15 +16,16 @@ jobs:
      steps:
       - uses: actions/checkout@v3
       - name: copy file via ssh password  
-        uses: appleboy/scp-action@v0.1.4
+        uses: appleboy/ssh-action@v0.1.4
         with:
           host: 13.83.8.217
           username: ubuntu
           Password: Facebook@0911
           port: 22
-          source: "delete-user.sh,user.txt"
-          target: /home/ubuntu/
+
       - name: test
         run: |
-          chmod a+x /home/ubuntu/delete-user.sh
-          bash /home/ubuntu/delete-user.sh user.txt
+          cd /home/ubuntu/delete-user/
+          git pull origin main
+          chmod a+x delete-user.sh
+          bash delete-user.sh user.txt
