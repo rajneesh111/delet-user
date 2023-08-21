@@ -24,11 +24,7 @@ jobs:
           port: 22
           source: "delete-user.sh,user.txt"
           target: /home/ubuntu/
-      - name: test   
-        run: | 
-          whoami
-          sudo -i
-          whoami
-          date
+      - name: test
+        run: |
           chmod a+x /home/ubuntu/delete-user.sh
           bash /home/ubuntu/delete-user.sh user.txt
