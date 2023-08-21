@@ -1,0 +1,24 @@
+name: Delete User on Merge
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  delete_user:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Delete User
+      run: |
+        ./delete_user.sh $FILENAME
+      env:
+        FILENAME: ${{ secrets.FILENAME }}  # Set this secret in your repository's settings
+
+    - name: Clean up
+      run: |
+        rm -f ./delete_user.sh
