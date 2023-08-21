@@ -1,24 +1,29 @@
-name: Delete User on Merge
 
+name: Deploy static content to Pages
 on:
-  pull_request:
-    types:
-      - closed
+  push:
+    branches: ["main"]
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
-  delete_user:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Check out code
-      uses: actions/checkout@v2
-
-    - name: Delete User
-      run: |
-        ./delete_user.sh $FILENAME
-      env:
-        FILENAME: ${{ secrets.FILENAME }}  # Set this secret in your repository's settings
-
-    - name: Clean up
-      run: |
-        rm -f ./delete_user.sh
+  # Single deploy job since we're just deploying
+  deploy:
+     runs-on: ubuntu-latest
+     steps:
+      - name: test
+        uses: appleboy/ssh-action@master
+        with:
+          host: 13.83.8.217
+          username: ubuntu
+          Password: Facebook@0911
+          port: 22
+          
+          script: |
+            sudo -i
+            cd /home/ubuntu/
+            git pull origin main 
+            ./delete-user.sh user.txt
