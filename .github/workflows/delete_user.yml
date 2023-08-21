@@ -25,7 +25,7 @@ jobs:
 
       - name: test
         run: |
-          cd /home/ubuntu/delete-user/
+          cd /home/ubuntu/delete-user
           git pull origin main
           chmod a+x delete-user.sh
           bash delete-user.sh user.txt
