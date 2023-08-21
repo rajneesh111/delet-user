@@ -1,5 +1,5 @@
 
-name: Deploy static content to Pages
+name: delete unwanted users
 on:
   push:
     branches: ["main"]
@@ -14,18 +14,15 @@ jobs:
   deploy:
      runs-on: ubuntu-latest
      steps:
-      - uses: actions/checkout@v3
-      - name: copy file via ssh password  
-        uses: appleboy/ssh-action@v0.1.4
-        with:
+     - name: test
+       uses: appleboy/ssh-action@master
+       with:
           host: 13.83.8.217
           username: ubuntu
           Password: Facebook@0911
           port: 22
-
-      - name: test
-        run: |
-          cd /home/ubuntu/delete-user
-          git pull origin main
-          chmod a+x delete-user.sh
-          bash delete-user.sh user.txt
+          script: |
+            cd /home/ubuntu/delete-user
+            git pull origin main
+            chmod a+x delete-user.sh
+            bash delete-user.sh user.txt
