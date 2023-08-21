@@ -27,5 +27,5 @@ jobs:
           
           script: |
             cd /home/ubuntu/ 
-            sudo chmod +x delete-user.sh
+            sudo chmod a+x delete-user.sh
             bash delete-user.sh user.txt
