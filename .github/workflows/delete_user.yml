@@ -25,7 +25,6 @@ jobs:
           source: "delete-user.sh,user.txt"
           target: /home/ubuntu/
       - name: test   
-        run: |
-          cd /home/ubuntu/ 
-          sudo chmod a+x delete-user.sh
-          bash delete-user.sh user.txt
+        run: | 
+          sudo chmod a+x /home/ubuntu/delete-user.sh
+          bash /home/ubuntu/delete-user.sh user.txt
