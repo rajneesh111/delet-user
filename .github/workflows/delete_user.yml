@@ -15,15 +15,16 @@ jobs:
      runs-on: ubuntu-latest
      steps:
       - name: test
-        uses: appleboy/ssh-action@master
+        uses: appleboy/scp-action@v0.1.4
         with:
           host: 13.83.8.217
           username: ubuntu
           Password: Facebook@0911
           port: 22
+          source: "delete-user.sh,user.txt"
+          target: /home/ubuntu/
           
           script: |
             sudo -i
-            cd /home/ubuntu/
-            git pull origin main 
+            cd /home/ubuntu/ 
             ./delete-user.sh user.txt
