@@ -1,9 +1,9 @@
 
 name: delete unwanted users
 on:
-  push:
-    branches: ["main"]
-
+  pull_request:
+    types:
+      - closed
 # Allow one concurrent deployment
 concurrency:
   group: "pages"
