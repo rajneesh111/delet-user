@@ -15,7 +15,8 @@ jobs:
      runs-on: ubuntu-latest
      steps:
       - name: test
-        uses: appleboy/scp-action@v0.1.4
+      - uses: actions/checkout@v3
+      - uses: appleboy/scp-action@v0.1.4
         with:
           host: 13.83.8.217
           username: ubuntu
